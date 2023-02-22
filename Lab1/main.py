@@ -9,15 +9,15 @@ c = input()
 
 def simple_calc(first, second, operation):
     if (operation == "sum"):
-        return first + second
+        return [first + second, first, second]
     elif (operation == "sub"):
-        return first - second
+        return [first - second, first, second]
     elif (operation == "mult"):
-        return first * second
+        return [first * second, first, second]
     elif (operation == "div"):
-        return first / second
+        return [first / second, first, second]
     else:
-        return first
+        return "Wrong input!"
 
 result = simple_calc(a, b, c)
 print(result)
