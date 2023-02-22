@@ -10,6 +10,8 @@ c = input()
 def simple_calc(first, second, operation):
     if (operation == "sum"):
         return first + second
+    elif (operation == "sub"):
+        return first - second
     else:
         return first
 
