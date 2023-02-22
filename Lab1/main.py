@@ -2,12 +2,9 @@
 print("Hello world!")
 
 #Second task (function of simple calculator)
-print("Type first number: ")
-first_number = int(input())
-print("Type second number: ")
-second_number = int(input())
-print("Type operation: ")
-operator = input()
+first_number = 4
+second_number = 5
+operator = "sum"
 
 def simple_calc(first, second, operation):
     if (operation == "sum"):
