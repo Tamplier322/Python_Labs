@@ -5,9 +5,13 @@ a = int(input())
 print("Type second number: ")
 b = int(input())
 print("Type operation: ")
-oper = input()
+c = input()
 
-def simple_calc(a, b, oper):
-    return a+b
+def simple_calc(first, second, operation):
+    if (operation == "sum"):
+        return first + second
+    else:
+        return first
 
-simple_calc(a, b, oper)
+result = simple_calc(a, b, c)
+print(result)
