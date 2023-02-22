@@ -14,6 +14,8 @@ def simple_calc(first, second, operation):
         return first - second
     elif (operation == "mult"):
         return first * second
+    elif (operation == "div"):
+        return first / second
     else:
         return first
 
