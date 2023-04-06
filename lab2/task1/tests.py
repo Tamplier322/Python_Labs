@@ -88,3 +88,24 @@ class TestAvgWordLength(unittest.TestCase):
         actual = statistic_util.average_word_lenght(text)
         self.assertEqual(actual, expected,
             'Error in test3_for_average_word_length, length must be ' + str(expected))
+
+class TestTopKRepeatedNgram(unittest.TestCase):
+    def test1_for_top_k_repeated_ngram(self):
+        expected = []
+        actual = statistic_util.top_k_repeated_n_grams('')
+        self.assertEqual(actual, expected,
+            'Error in test1_for_top_k_repeated_ngram, it\'s must be ' + str(expected))
+
+    def test2_for_top_k_repeated_ngram(self):
+        text = 'Hsdgfgdsf, My favorite food burger. And theres no repeated words.'
+        expected = [('hsdgfgdsf my favorite', 1), ('my favorite food', 1), ('favorite food burger', 1)]
+        actual = statistic_util.top_k_repeated_n_grams(text, 3, 3)
+        self.assertListEqual(actual, expected,
+            'Error in test2_for_top_k_repeated_ngram, it\'s must be ' + str(expected))
+
+    def test3_for_top_k_repeated_ngram(self):
+        text = 'hasdhf my favorite food is a burger my favorite burger is a burger'
+        expected = [('is a burger', 2), ('hasdhf my favorite', 1), ('my favorite food', 1)]
+        actual = statistic_util.top_k_repeated_n_grams(text, 3, 3)
+        self.assertListEqual(actual, expected,
+            'Error in test3_for_top_k_repeated_ngram, it\'s must be ' + str(expected))
