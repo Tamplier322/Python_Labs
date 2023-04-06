@@ -1,12 +1,12 @@
-WORD_PATTERN = r'\b[a-zA-Z\d]+\b'
-NUMBER_PATTERN = r'\b\d+\b'
-SENTENCE_PATTERN = r'[.!\?]+'
-NON_DECLARATIVE_SENTENCE_PATTERN = r'[!\?]+'
+WORDS = r'\b[a-zA-Z\d]+\b'
+NUMBERS = r'\b\d+\b'
+SENTENCES = r'[.!\?]+'
+NON_DECL_SENTENCES = r'[!\?]+'
 
-ONE_WORD_ABBREVIATIONS = [
+ABBREVIATIONS1 = [
 'jan.', 'feb.', 'mar.', 'apr.', 'jun.', 'jul.', 'aug.', 'sep.', 'oct.', 'nov.', 'dec.',
 'mon.', 'tue.', 'wed.', 'thu', 'fri.', 'sat.', 'sun.',
 'etc.', 'vs.', 'jr.', 'sr.', 'mr.', 'ms.', 'mrs.', 'smb.', 'smth.', 'adj.', 'prep.', 'pp.', 'par.', 'ex.',
 'pl.', 'edu.', 'appx.', 'sec.', 'gm.', 'cm.', 'yr.', ]
 
-TWO_WORDS_ABBREVIATIONS = ['e.g.', 'i.e.', 'p.s.', 'ph.d.']
+ABBREVIATIONS2 = ['e.g.', 'i.e.', 'p.s.', 'ph.d.']
