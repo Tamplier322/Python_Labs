@@ -70,5 +70,20 @@ def exec_command(command: str, arguments: str, storage: Container) -> bool:
             greeting(arguments)
         case _:
             print('Such command not supported')
-            return True
+    return True
 
+
+def main():
+    print('Welcome to my own set!')
+    username = input('Enter username: ')
+    storage = Container(username)
+    print(f'Hello, {username}!')
+    print('Type command or \'help\' to get info about available commands.')
+    is_working = True
+    while is_working:
+        command, args = parse_command()
+        is_working = exec_command(command, args, storage)
+
+
+if __name__ == "__main__":
+    main()
