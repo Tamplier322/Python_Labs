@@ -42,8 +42,14 @@ class Container:
             with open(self._filename, 'r') as infile:
                 self._storage = set(json.load(infile))
 
+    def load_from_file(self):
+        if os.path.exists(self._filename):
+            with open(self._filename, 'r') as file:
+                tmp_container = set(json.load(file))
+                for i in tmp_container:
+                    self._storage.add(i)
+
     def switch(self, username: str):
         self._username = username
         self._filename = f'./data/{username}.json'
         self._storage.clear()
-        self.load()

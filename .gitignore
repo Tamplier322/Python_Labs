@@ -2,3 +2,4 @@ venv
 .idea
 Dockerfile
 __pycache__
+data

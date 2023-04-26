@@ -31,7 +31,10 @@ def ask_save_container(storage: Container):
     if answer == 'y':
         storage.save()
 
-
+def ask_load_container(storage: Container):
+    answer = input('Do you want to load container?(y/n): ')
+    if answer == 'y':
+        storage.load()
 def greeting(username: str):
     print(f'Hello, {username}!')
 
@@ -61,6 +64,8 @@ def exec_command(command: str, arguments: str, storage: Container) -> bool:
         case 'save':
             storage.save()
             print('Container was saved successfully!')
+        case 'load':
+            storage.load_from_file()
         case 'exit':
             ask_save_container(storage)
             return False
@@ -68,6 +73,7 @@ def exec_command(command: str, arguments: str, storage: Container) -> bool:
             ask_save_container(storage)
             storage.switch(arguments)
             greeting(arguments)
+            ask_load_container(storage)
         case _:
             print('Such command not supported')
     return True
