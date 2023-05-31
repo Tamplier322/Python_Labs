@@ -1,4 +1,4 @@
-from Serializers.type_constants import \
+from Serializers.constants import \
                            nonetype, moduletype, codetype, celltype, \
                            functype, bldinfunctype, \
                            mapproxytype, wrapdesctype, metdesctype, getsetdesctype, \
