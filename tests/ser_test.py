@@ -1,4 +1,4 @@
-from Serializers.serializers_factory import SerializersFactory, SerializerType
+from Serializers.ser_factory import SerializersFactory, SerializerType
 from tests import *
 
 serializer = SerializersFactory.create_serializer(SerializerType.JSON)
