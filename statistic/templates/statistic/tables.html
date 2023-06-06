@@ -1,0 +1,96 @@
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #191970;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: linear-gradient(to top, #003300 0%, #ffffff 141%);
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            color: yellow;
+            background: linear-gradient(to top, #003300 0%, #ffffff 141%);
+        }
+
+        a {
+            color: linear-gradient(to top, #003300 0%, #ffffff 141%);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #191970;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Product Table</h1>
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Place</th>
+                <th>Name</th>
+                <th>Purchase count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in product_table %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="/statistic/tables/{{ product.id }}">{{ product.name }}</a></td>
+                <td>{{ product.purchase_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Pivot Table</h1>
+    <table class="cart-table">
+        <tbody>
+            {% for arr in pivot_table %}
+            <tr>
+                {% for cell in arr %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/statistic/" method="get">
+        <button class="glow-on-hover" type="submit">Back</button>
+    </form>
+</body>
+</html>

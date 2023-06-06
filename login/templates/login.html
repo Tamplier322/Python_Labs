@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        .container {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+        .quote-container {
+            position: fixed;
+            width: 800px;
+            height: 80px;
+            bottom: 1100px;
+            right: 250px;
+            padding: 10px;
+            background-color: lightpink;
+            border: 3px solid black;
+            border-radius: 4px;
+            font-size: 22px;
+        }
+
+        .price-container {
+            position: fixed;
+            width: 800px;
+            height: 80px;
+            bottom: 1100px;
+            right: 1480px;
+            padding: 10px;
+            background-color: lightblue;
+            border: 3px solid black;
+            border-radius: 4px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="id_password">Password:</label>
+            {{ form.password }}
+        </div>
+        <button type="submit">Sign in</button>
+    </form>
+</div>
+
+<div class="quote-container">
+    <p>Fav Quotes API: {{ quote }}</p>
+</div>
+<div class="price-container">
+    <p>Price of bitcoin in USD: {{ currentPrice }}$</p>
+</div>
+
+</body>
+</html>

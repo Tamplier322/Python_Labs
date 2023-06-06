@@ -1,0 +1,69 @@
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            padding: 100px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 1000%;
+            max-width: 450px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #191970;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #77b6e2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sales Chart</h1>
+    <img src="/media/schedule.jpg">
+    <div class="button-container">
+        <form action="/" method="get">
+            <button class="glow-on-hover" type="submit">Back</button>
+        </form>
+        <form action="/statistic/tables" method="get">
+            <button class="glow-on-hover" type="submit">Product Table</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block title %}
+  Shopping Cart
+{% endblock %}
+
+{% block content %}
+<h1 class="cart-heading">Shopping Cart</h1>
+<div class="cart-container">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Estate Name</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Cost</th>
+          <th>Update Quantity</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+          {% with product=item.product %}
+            <tr>
+              <td class="cart-image">
+                <a href="{{ product.get_absolute_url }}">
+                  <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="product-image">
+                </a>
+              </td>
+              <td>{{ product.name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td class="cart-price">{{ item.cost }}</td>
+              <td class="cart-price">{{ item.total_cost }}</td>
+              <td class="cart-update">
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                  {{ item.update_quantity_form.quantity }}
+                  {{ item.update_quantity_form.update }}
+                  <button type="submit" class="btn-update">Update</button>
+                  {% csrf_token %}
+                </form>
+              </td>
+              <td class="cart-remove"><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
+            </tr>
+          {% endwith %}
+        {% endfor %}
+        <tr class="cart-total">
+          <td colspan="4"></td>
+          <td colspan="2">Total:</td>
+          <td class="cart-price">{{ cart.get_total_price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cart-buttons">
+    <a href="{% url 'store:product_list' %}" class="button4">Continue Shopping</a>
+    <a href="{% url 'orders:order_create' %}" class="button4">Checkout</a>
+  </div>
+</div>
+{% endblock %}

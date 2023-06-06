@@ -1,0 +1,36 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+<div class="product-detail">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+    <h1>{{ product.name }}</h1>
+    <h2>
+        <a href="{{ product.type.get_absolute_url }}">{{ product.ProductType }}</a>
+    </h2>
+    <p class="cost">{{ product.cost }}</p>
+    {% if user.is_authenticated %}
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <button class="glow-on-hover" type="submit" value="Add to cart" class="btn-add-to-cart">Add to cart</button>
+    </form>
+    {% endif %}
+    <div class="description">
+        {{ product.description|linebreaks }}
+    </div>
+    {% if user.is_staff %}
+    <div class="admin-links">
+        <a href="edit/{{ product.id }}/">Edit</a> |
+        <a href="delete/{{ product.id }}/">Remove</a>
+    </div>
+    {% endif %}
+    <div class="bottom-right">
+        <p>Joke for you: {{ joke }}</p>
+    </div>
+</div>
+{% endblock %}

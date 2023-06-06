@@ -1,0 +1,91 @@
+{% extends "store/base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+    <style>
+        .container {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .checkout-heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .order-info {
+            margin-bottom: 40px;
+        }
+
+        .order-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .order-items li {
+            text-align: center;
+        }
+
+        .item-quantity {
+            margin-left: center;
+        }
+
+        .item-name {
+            flex-grow: 1;
+        }
+
+        .item-total-price {
+            margin-left: center;
+        }
+
+        .order-total {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .order-form {
+            text-align: center;
+        }
+
+        .order-form input[type="submit"] {
+            background-color: #191970;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .order-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <div class="container">
+        <h1 class="checkout-heading">Checkout</h1>
+        <div class="order-info">
+            <h3>Your Order</h3>
+            <ul class="order-items">
+                {% for item in cart %}
+                    <li class="order-item">
+                        <span class="item-quantity">{{ item.quantity }}x</span>
+                        <span class="item-name">{{ item.product.name }}</span>
+                        <span class="item-total-price">{{ item.total_price }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="order-total">Total: {{ cart.get_total_price }}</p>
+        </div>
+
+        <form action="." method="post" class="order-form">
+            <p><input type="submit" value="Place Order"></p>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <style>
+
+    .container {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .errorlist {
+        color: red;
+        margin-top: 5px;
+        padding-left: 15px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    </style>
+    <script>
+        function animateForm() {
+            var form = document.querySelector('form');
+            form.classList.add('animated', 'bounce');
+            setTimeout(function() {
+                form.classList.remove('animated', 'bounce');
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+        <h1>Registration</h1>
+        <form action="" method="POST" onsubmit="animateForm()">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
